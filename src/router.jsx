@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { RootLayout} from './pages/RootLayout';
 import { Home } from './pages/Home';
-import {ItemsLayout} from './pages/ItemsLayout';
-import { ListItems } from './pages/ListItems';
-import { CreateItems } from './pages/CreateItems';
-import { ShowItems } from './pages/ShowItems';
-import { UpdateItems } from './pages/UptadeItems';
+import {ItemsLayout} from './pages/Items/ItemsLayout';
+import { ListItems } from './pages/Items/ListItems';
+import { CreateItems } from './pages/Items/CreateItems';
+import { ShowItems } from './pages/Items/ShowItems';
+import { UpdateItems } from './pages/Items/UptadeItems';
 
 export function MainRoutes() {
     return (

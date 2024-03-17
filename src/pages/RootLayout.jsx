@@ -1,5 +1,19 @@
+import { Link, Outlet } from "react-router-dom";
+
 export function RootLayout() {
     return(
-        <h1 className="text-5xl t text-center">RootLayout</h1>
+        <>
+        <header>
+            <Link to={"/"}>ConnectStock</Link>
+            <nav>
+                <Link to={"/"} >Inicio</Link>
+                <Link to={"/items"}>Items</Link>
+            </nav>
+            <div>
+                <Outlet/>
+            </div>
+            <footer>Feito com react router dom</footer>
+        </header>
+        </>
     )
 }
