@@ -1,19 +1,33 @@
 import { Link, Outlet } from "react-router-dom";
 
 export function RootLayout() {
-    return(
-        <>
-        <header>
-            <Link to={"/"}>ConnectStock</Link>
-            <nav>
-                <Link to={"/"} >Inicio</Link>
-                <Link to={"/items"}>Items</Link>
-            </nav>
-            <div>
-                <Outlet/>
-            </div>
-            <footer>Feito com react router dom</footer>
-        </header>
-        </>
-    )
+  return (
+    <main className="h-screen">
+      <header className="flex justify-between m-6 ">
+        <Link className="text-4xl font-lalezar" to={"/"}>
+          CONNECT STOCK
+        </Link>
+        <nav className="mt-2">
+          <Link
+            className="text-2xl mx-4 cursor-pointer rounded-md px-6 py-4 hover:bg-slate-500/10 "
+            to={"/"}
+          >
+            Inicio
+          </Link>
+          <Link
+            className="text-2xl mx-4 cursor-pointer rounded-md px-6 py-4 hover:bg-slate-500/10 "
+            to={"/items"}
+          >
+            Items
+          </Link>
+        </nav>
+      </header>
+      <div className="h-[40rem]">
+        <Outlet />
+      </div>
+      <div className=" h-[4rem]">
+        <footer className="">Feito com react router dom</footer>
+      </div>
+    </main>
+  );
 }
