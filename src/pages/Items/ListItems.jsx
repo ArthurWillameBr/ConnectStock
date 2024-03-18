@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
+import { ItemsTable } from "../../components/ItemsTable";
 
 export function ListItems() {
   return (
     <div>
-      <h1 className="text-5xl text-center">Todos os items</h1>
-      <Outlet />
+      <ItemsTable/>
+      
     </div>
   );
 }
