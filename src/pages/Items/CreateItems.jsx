@@ -1,10 +1,10 @@
-import { Outlet } from "react-router-dom";
+
+import { ItemForm } from "../../components/ItemForm";
 
 export function CreateItems() {
     return(
         <div>
-        <h1 className="text-5xl text-center">Criar items</h1>
-        <Outlet/>
+        <ItemForm/>
         </div>
     )
 }
