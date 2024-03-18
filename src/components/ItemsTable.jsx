@@ -3,9 +3,9 @@ import { UseStock } from "../hooks/useStock";
 export function ItemsTable() {
     const {items} = UseStock()
   return (
-    <table>
-      <thead>
-        <tr>
+    <table className="flex justify-center">
+      <thead className="bg-zinc-900">
+        <tr className="flex gap-52 py-4 px-8 rounded text-lg shadow-lg">
           <th>ID</th>
           <th>Nome</th>
           <th>Em Estoque</th>
