@@ -36,10 +36,20 @@ export const StockContextProvider = ( { children } ) => {
             return updatedItems
         })
     }
+    const uptadeItem = (itemId, newAtributes) => {
+        setItems(currentStates => {
+            const itemIndex = currentStates.findIndex(item => item.id === +itemId)
+            const updatedItems = [...currentStates]
+            Object.assign(updatedItems[itemIndex], newAtributes, {updatedAt: new Date()})
+            localStorage.setItem('connect-stock-storage', JSON.stringify(updatedItems));
+            return updatedItems
+        })
+    }   
 
     const stock = {
         items,
         deleteItems,
+        uptadeItem,
         addItems, 
         getItems    
     }

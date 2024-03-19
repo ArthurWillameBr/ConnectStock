@@ -1,10 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { UseStock } from "../../hooks/useStock";
+import { useParams } from "react-router-dom";
+import { ItemForm } from "../../components/ItemForm";
 
 export function UpdateItems() {
-    return(
-        <div>
-        <h1 className="text-5xl t text-center">Update Items</h1>
-        <Outlet/>
-        </div>
-    )
+  const { getItems } = UseStock();
+  const { id } = useParams();
+
+  const item = getItems(id);
+
+  return (
+    <div>
+      <h1 className="text-5xl t text-center">Update Items</h1>
+      <ItemForm itemToUpdate={item} />
+    </div>
+  );
 }

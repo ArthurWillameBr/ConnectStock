@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { DeleteButton } from "../../components/DeleteButton";
 export function ShowItems() {
+
   const { getItems } = UseStock();
   const { id } = useParams();
 
@@ -11,7 +12,7 @@ export function ShowItems() {
   return (
     <div className="m-8">
         <div className=" flex justify-center m-6">
-        <h1 className="text-5xl">{item.name}</h1>
+        <h1 className="text-4xl">{item.name}</h1>
         </div>
         <div className="flex gap-10 justify-center">
       

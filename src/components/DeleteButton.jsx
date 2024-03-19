@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { UseStock } from '../hooks/useStock'
+import  { useNavigate } from 'react-router-dom'
 DeleteButton.propTypes = {
     itemName: PropTypes.string,
     itemId: PropTypes.number,
@@ -7,10 +8,11 @@ DeleteButton.propTypes = {
 
 export function DeleteButton( {itemName, itemId}) {
     const { deleteItems } = UseStock()
-
+    const navigate = useNavigate()
     function handleDelete() {
         if(confirm(`Tem certeza que deseja excluir o item ${itemName}?`)){
             deleteItems(itemId)
+            navigate('/items')
         }
     }
     return (
