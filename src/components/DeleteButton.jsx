@@ -5,13 +5,12 @@ DeleteButton.propTypes = {
     itemId: PropTypes.number,
 }
 
-
 export function DeleteButton( {itemName, itemId}) {
-    const { DeleteItems } = UseStock()
+    const { deleteItems } = UseStock()
 
     function handleDelete() {
         if(confirm(`Tem certeza que deseja excluir o item ${itemName}?`)){
-            DeleteItems(itemId)
+            deleteItems(itemId)
         }
     }
     return (

@@ -5,8 +5,6 @@ import  PropTypes  from "prop-types"
 
 export const StockContext = createContext({})
 
-
-
 export const StockContextProvider = ( { children } ) => {
     const [items, setItems] = useState(() => {
         const storedItems = localStorage.getItem('connect-stock-storage')
@@ -19,6 +17,10 @@ export const StockContextProvider = ( { children } ) => {
         return items
     })
 
+    const getItems = (itemId) => {
+        return items.find(item => item.id === +itemId)
+    }
+
     const addItems = (item) => {
         setItems(currentState => {
             const updatedItems = [item, ...currentState]
@@ -27,7 +29,7 @@ export const StockContextProvider = ( { children } ) => {
         })
     }
 
-    const DeleteItems = (itemId) => {
+    const deleteItems = (itemId) => {
         setItems(currentState => {
             const updatedItems = currentState.filter((item) => item.id !== itemId)
             localStorage.setItem('connect-stock-storage', JSON.stringify(updatedItems));
@@ -37,8 +39,9 @@ export const StockContextProvider = ( { children } ) => {
 
     const stock = {
         items,
-        DeleteItems,
+        deleteItems,
         addItems, 
+        getItems    
     }
 
     
