@@ -5,7 +5,6 @@ export function ListItems() {
   return (
     <div>
       <ItemsTable/>
-      
     </div>
   );
 }

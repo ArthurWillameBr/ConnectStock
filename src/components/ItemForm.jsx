@@ -1,24 +1,32 @@
-//fazer validação com zod
+import { useRef, useState } from "react";
+import StockItem from "../entities/StockItem";
+import { UseStock } from "../hooks/useStock";
+import  PropTypes  from "prop-types"
 
-import { useState } from "react";
 
 const CATEGORIES = [
     'Jogos',
     'Livro',
     'Brinquedos',
     'Acessórios'
-    
-
 ]
+
+ItemForm.propTypes = {
+  itemToUpdate: PropTypes.object	
+}
 export function ItemForm({ itemToUpdate }) {
+  
     const defaultItem = {
-        name: '',
-        description: '',
-        price: 0,
-        stock: 0,
-        category: '',
+        name: "",
+        description: "",
+        price: "",
+        quantity: "",
+        category: "",
     }
+
     const [item, setItem] = useState(itemToUpdate ? itemToUpdate : defaultItem)
+    const { addItems } = UseStock()
+    const inputRef = useRef(null)
 
     function handleChange(e) {
         setItem(currentState => {
@@ -28,17 +36,30 @@ export function ItemForm({ itemToUpdate }) {
             }
         })
     }
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        try {
+           const validItem = new StockItem(item)
+           addItems(validItem)
+           alert('item cadastrado com sucesso')
+           inputRef.current.focus()
+           setItem(defaultItem)
+        } catch (err) {
+            console.log(err)
+        }
+    }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="flex justify-center gap-20">
         <div className="flex flex-col">
           <label htmlFor="name">Nome</label>
           <input
             className="bg-zinc-900 p-2 outline-none border-[3px] border-zinc-900 rounded focus:border-blue-600"
             type="text"
+            ref={inputRef}
             name="name"
             id="name"
-            
             value={item.name}
             onChange={handleChange}
           />
@@ -47,7 +68,7 @@ export function ItemForm({ itemToUpdate }) {
           <label htmlFor="quantity">Quantidade</label>
           <input
             className="bg-zinc-900 p-2 outline-none border-[3px] border-zinc-900 rounded focus:border-blue-600"
-            type="text"
+            type="number"
             name="quantity"
             id="quantity"
             value={item.quantity}
@@ -82,7 +103,7 @@ export function ItemForm({ itemToUpdate }) {
               <option
                 key={category}
                 value={category}
-                defaultChecked={item.category}
+                defaultChecked={item.category === category}
               >
                 {category}
               </option>
@@ -97,7 +118,7 @@ export function ItemForm({ itemToUpdate }) {
 
         </div>
         <textarea
-          className="w-3/4 h-36 bg-zinc-900 resize-none"
+          className="w-3/4 h-36 bg-zinc-900 resize-none rounded border-zinc-900 outline-none border-[3px] focus:border-blue-600"
           name="description"
           id="description"
           value={item.description}
@@ -106,7 +127,7 @@ export function ItemForm({ itemToUpdate }) {
 
         </textarea>
         <div className="flex mt-4 w-3/4 ">
-        <button className="px-6 py-4 bg-blue-600 rounded">
+        <button className="px-6 py-4 bg-blue-600 rounded" type="submit">
         Salvar
         </button>
         </div>

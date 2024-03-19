@@ -25,9 +25,7 @@ export function RootLayout() {
       <div className="h-[40rem]">
         <Outlet />
       </div>
-      <div className=" h-[4rem]">
-        <footer className="">Feito com react router dom</footer>
-      </div>
+      
     </main>
   );
 }
