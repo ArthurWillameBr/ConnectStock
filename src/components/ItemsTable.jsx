@@ -45,7 +45,7 @@ export function ItemsTable() {
               >
                 Atualizar
               </Link>
-              <DeleteButton />
+              <DeleteButton itemName={item.name} itemId={item.id} />
             </div>
           </div>
         ))}

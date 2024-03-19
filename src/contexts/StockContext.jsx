@@ -26,8 +26,18 @@ export const StockContextProvider = ( { children } ) => {
             return updatedItems
         })
     }
+
+    const DeleteItems = (itemId) => {
+        setItems(currentState => {
+            const updatedItems = currentState.filter((item) => item.id !== itemId)
+            localStorage.setItem('connect-stock-storage', JSON.stringify(updatedItems));
+            return updatedItems
+        })
+    }
+
     const stock = {
         items,
+        DeleteItems,
         addItems, 
     }
 
