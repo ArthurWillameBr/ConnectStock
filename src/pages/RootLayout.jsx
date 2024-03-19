@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 
 export function RootLayout() {
   return (
-    <main className="h-screen">
+    <main className="h-screen ">
       <header className="flex justify-between m-6 ">
         <Link className="text-4xl font-lalezar" to={"/"}>
           CONNECT STOCK
@@ -22,8 +22,8 @@ export function RootLayout() {
           </Link>
         </nav>
       </header>
-      <div className="h-[40rem]">
-        <Outlet />
+      <div className="">
+      <Outlet />
       </div>
       
     </main>
