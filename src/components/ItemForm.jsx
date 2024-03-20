@@ -2,16 +2,16 @@ import { useRef, useState } from "react";
 import StockItem from "../entities/StockItem";
 import { UseStock } from "../hooks/useStock";
 import PropTypes from "prop-types";
+//import { useForm } from "react-hook-form";
 
 const CATEGORIES = ["Jogos", "Livro", "Brinquedos", "Acessórios"];
-
 ItemForm.propTypes = {
   itemToUpdate: PropTypes.object,
 };
 export function ItemForm({ itemToUpdate }) {
   const defaultItem = {
     name: "",
-    description: "",
+    descriptio: "",
     price: "",
     quantity: "",
     category: "",
@@ -20,7 +20,7 @@ export function ItemForm({ itemToUpdate }) {
   const [item, setItem] = useState(itemToUpdate ? itemToUpdate : defaultItem);
   const { addItems, uptadeItem } = UseStock();
   const inputRef = useRef(null);
-
+  //const { register, handleSubmit } = useForm();
   function handleChange(e) {
     setItem((currentState) => {
       return {
@@ -29,13 +29,13 @@ export function ItemForm({ itemToUpdate }) {
       };
     });
   }
-  function handleSubmit(e) {
+  
+  function handleSubmitOn(e) {
     e.preventDefault();
-
     try {
       if (itemToUpdate) {
         uptadeItem(itemToUpdate.id, item);
-        alert(`O item ${item.name} foi atualizado com sucesso!`)
+        alert(`O item ${item.name} foi atualizado com sucesso!`);
       } else {
         const validItem = new StockItem(item);
         addItems(validItem);
@@ -49,17 +49,17 @@ export function ItemForm({ itemToUpdate }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmitOn}>
       <div className="flex justify-center gap-20">
         <div className="flex flex-col">
           <label htmlFor="name">Nome</label>
           <input
             className="bg-zinc-900 p-2 outline-none border-[3px] border-zinc-900 rounded focus:border-blue-600"
             type="text"
+            id="name"
             ref={inputRef}
             name="name"
-            id="name"
-            value={item.name}
+            defaultValue={item.name}
             onChange={handleChange}
           />
         </div>
@@ -68,9 +68,9 @@ export function ItemForm({ itemToUpdate }) {
           <input
             className="bg-zinc-900 p-2 outline-none border-[3px] border-zinc-900 rounded focus:border-blue-600"
             type="number"
-            name="quantity"
-            id="quantity"
             value={item.quantity}
+            id="quantity"
+            name="quantity"
             onChange={handleChange}
           />
         </div>
@@ -79,9 +79,9 @@ export function ItemForm({ itemToUpdate }) {
           <input
             className="bg-zinc-900 p-2 outline-none border-[3px] border-zinc-900 rounded focus:border-blue-600"
             type="number"
-            name="price"
-            id="price"
             value={item.price}
+            id="price"
+            name="price"
             onChange={handleChange}
           />
         </div>
@@ -90,9 +90,9 @@ export function ItemForm({ itemToUpdate }) {
           <select
             className="bg-zinc-900 px-4 py-2 outline-none border-[3px] border-zinc-900 rounded focus:border-blue-600"
             type="text"
-            name="category"
-            id="category"
             value={item.category}
+            id="categoty"
+            name="category"
             onChange={handleChange}
           >
             <option disabled value="">

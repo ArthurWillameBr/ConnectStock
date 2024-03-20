@@ -4,7 +4,7 @@ export function RootLayout() {
   return (
     <main className="h-screen ">
       <header className="flex justify-between m-6 ">
-        <Link className="text-4xl font-lalezar" to={"/"}>
+        <Link className="text-3xl font-lalezar" to={"/"}>
           CONNECT STOCK
         </Link>
         <nav className="mt-2">

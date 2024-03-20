@@ -14,9 +14,9 @@ export function ShowItems() {
         <div className=" flex justify-center m-6">
         <h1 className="text-4xl">{item.name}</h1>
         </div>
-        <div className="flex gap-10 justify-center">
-      
-      <Link className="bg-slate-600 px-4 py-2 rounded cursor-pointer"to={`/items${item.id}/update`}>Atualizar</Link>
+        <div className="flex gap-10 justify-center"> 
+                                                                            
+      <Link className="bg-slate-600 px-4 py-2 rounded cursor-pointer" to={`/items/${item.id}/update`} >Atualizar</Link>
       <DeleteButton itemId={item.id} itemName={item.name} />
       </div>
       <div className="flex justify-center gap-10 mt-10 text-center items-center">

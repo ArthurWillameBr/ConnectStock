@@ -1,10 +1,6 @@
-//StockContext
-
 import { createContext, useState } from "react";
 import  PropTypes  from "prop-types"
-
 export const StockContext = createContext({})
-
 export const StockContextProvider = ( { children } ) => {
     const [items, setItems] = useState(() => {
         const storedItems = localStorage.getItem('connect-stock-storage')
