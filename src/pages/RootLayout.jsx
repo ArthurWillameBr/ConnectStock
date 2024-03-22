@@ -18,7 +18,7 @@ export function RootLayout() {
             className="text-2xl mx-4 cursor-pointer rounded-md px-6 py-4 hover:bg-slate-500/10 "
             to={"/items"}
           >
-            Items
+            Itens
           </Link>
         </nav>
       </header>
